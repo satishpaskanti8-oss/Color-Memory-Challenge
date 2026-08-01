@@ -54,10 +54,10 @@ export function getLevelConfig(level: number): LevelConfig {
   else if (level <= 30) { grid = 7; memory = 5000; colors = 8; moving = true; }
   else if (level <= 32) { grid = 7; memory = 5000; colors = 8; moving = true; }
   else if (level <= 36) { grid = 7; memory = 5000; colors = 8; moving = true; }
-  else if (level <= 39) { grid = 8; memory = 5000; colors = 8; extreme = true; }
-  else if (level <= 46) { grid = 8; memory = 5000; colors = 8; extreme = true; }
-  else if (level <= 48) { grid = 8; memory = 5000; colors = 9; extreme = true; }
-  else if (level === 49) { grid = 8; memory = 5000; colors = 10; extreme = true; }
+  else if (level <= 39) { grid = 8; memory = 5000; colors = 8; extreme = true; moving = true; }
+  else if (level <= 46) { grid = 8; memory = 5000; colors = 8; extreme = true; moving = true; }
+  else if (level <= 48) { grid = 8; memory = 5000; colors = 9; extreme = true; moving = true; }
+  else if (level === 49) { grid = 8; memory = 5000; colors = 10; extreme = true; moving = true; }
   else { grid = 8; memory = 5000; colors = 10; extreme = true; moving = true; }
 
   const rounds = Math.min(10, 5 + Math.floor((level - 1) / 6));
