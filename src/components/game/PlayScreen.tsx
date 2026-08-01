@@ -503,6 +503,10 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
         </div>
       </div>
 
+      {shiftMessage && (
+        <p className="mt-3 text-center text-base font-bold text-[var(--warning)]">{shiftMessage}</p>
+      )}
+
       <div className="mt-4 min-h-20 text-center">
         {phase === "memorize" && (
           <p className="animate-pop text-lg font-bold">
