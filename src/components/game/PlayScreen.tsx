@@ -49,6 +49,8 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
   const [wrong, setWrong] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [countdown, setCountdown] = useState(0);
+  // Latest grid movement message — stays visible until the next movement happens.
+  const [shiftMessage, setShiftMessage] = useState<string | null>(null);
   const [floating, setFloating] = useState<{ id: number; text: string } | null>(null);
   const [mystery, setMystery] = useState<{ open: boolean; reward: string } | null>(null);
   const answerStart = useRef(0);
