@@ -49,6 +49,8 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
   const [wrong, setWrong] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [countdown, setCountdown] = useState(0);
+  // Latest grid movement message — stays visible until the next movement happens.
+  const [shiftMessage, setShiftMessage] = useState<string | null>(null);
   const [floating, setFloating] = useState<{ id: number; text: string } | null>(null);
   const [mystery, setMystery] = useState<{ open: boolean; reward: string } | null>(null);
   const answerStart = useRef(0);
@@ -83,6 +85,7 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
       }
       later(() => {
         if (next.shift) {
+          setShiftMessage(shiftLabel(next.shift));
           setPhase("shift");
           later(() => {
             answerStart.current = Date.now();
@@ -109,6 +112,7 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
     setCorrect(0);
     setWrong(0);
     setCoinsEarned(0);
+    setShiftMessage(null);
     update((d) => ({ ...d, stats: { ...d.stats, gamesPlayed: d.stats.gamesPlayed + 1 } }));
     beginRound(0, config);
   }, [beginRound, level, mode, update]);
@@ -499,6 +503,10 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
           </div>
         </div>
       </div>
+
+      {shiftMessage && (
+        <p className="mt-3 text-center text-base font-bold text-[var(--warning)]">{shiftMessage}</p>
+      )}
 
       <div className="mt-4 min-h-20 text-center">
         {phase === "memorize" && (

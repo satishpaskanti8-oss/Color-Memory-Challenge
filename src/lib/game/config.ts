@@ -43,22 +43,22 @@ export function getLevelConfig(level: number): LevelConfig {
 
   if (level <= 2) { grid = 4; memory = 5000; colors = 3; }
   else if (level === 3) { grid = 4; memory = 5000; colors = 4; }
-  else if (level === 4) { grid = 4; memory = 4000; colors = 4; }
-  else if (level <= 6) { grid = 5; memory = 4000; colors = 6; }
-  else if (level === 7) { grid = 5; memory = 4000; colors = 7; }
-  else if (level === 8) { grid = 5; memory = 3000; colors = 7; }
-  else if (level === 9) { grid = 5; memory = 3000; colors = 8; }
-  else if (level <= 16) { grid = 6; memory = 3000; colors = 8; }
-  else if (level <= 18) { grid = 6; memory = 2500; colors = 8; }
-  else if (level === 19) { grid = 6; memory = 2000; colors = 8; }
-  else if (level <= 30) { grid = 7; memory = 2000; colors = 8; moving = true; }
-  else if (level <= 32) { grid = 7; memory = 1800; colors = 8; moving = true; }
-  else if (level <= 36) { grid = 7; memory = 1500; colors = 8; moving = true; }
-  else if (level <= 39) { grid = 8; memory = 1500; colors = 8; extreme = true; }
-  else if (level <= 46) { grid = 8; memory = 1000; colors = 8; extreme = true; }
-  else if (level <= 48) { grid = 8; memory = 1000; colors = 9; extreme = true; }
-  else if (level === 49) { grid = 8; memory = 1000; colors = 10; extreme = true; }
-  else { grid = 8; memory = 1000; colors = 10; extreme = true; moving = true; }
+  else if (level === 4) { grid = 4; memory = 5000; colors = 4; }
+  else if (level <= 6) { grid = 5; memory = 5000; colors = 6; }
+  else if (level === 7) { grid = 5; memory = 5000; colors = 7; }
+  else if (level === 8) { grid = 5; memory = 5000; colors = 7; }
+  else if (level === 9) { grid = 5; memory = 5000; colors = 8; }
+  else if (level <= 16) { grid = 6; memory = 5000; colors = 8; }
+  else if (level <= 18) { grid = 6; memory = 5000; colors = 8; }
+  else if (level === 19) { grid = 6; memory = 5000; colors = 8; }
+  else if (level <= 30) { grid = 7; memory = 5000; colors = 8; moving = true; }
+  else if (level <= 32) { grid = 7; memory = 5000; colors = 8; moving = true; }
+  else if (level <= 36) { grid = 7; memory = 5000; colors = 8; moving = true; }
+  else if (level <= 39) { grid = 8; memory = 5000; colors = 8; extreme = true; moving = true; }
+  else if (level <= 46) { grid = 8; memory = 5000; colors = 8; extreme = true; moving = true; }
+  else if (level <= 48) { grid = 8; memory = 5000; colors = 9; extreme = true; moving = true; }
+  else if (level === 49) { grid = 8; memory = 5000; colors = 10; extreme = true; moving = true; }
+  else { grid = 8; memory = 5000; colors = 10; extreme = true; moving = true; }
 
   const rounds = Math.min(10, 5 + Math.floor((level - 1) / 6));
 
