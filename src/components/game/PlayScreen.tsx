@@ -87,7 +87,7 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
         if (next.shift) {
           setShiftMessage(shiftLabel(next.shift));
           setPhase("shift");
-
+          later(() => {
             answerStart.current = Date.now();
             setPhase("answer");
           }, 900);
