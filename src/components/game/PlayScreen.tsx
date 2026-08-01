@@ -112,6 +112,7 @@ export function PlayScreen({ mode, level, onExit, onPlayLevel }: Props) {
     setCorrect(0);
     setWrong(0);
     setCoinsEarned(0);
+    setShiftMessage(null);
     update((d) => ({ ...d, stats: { ...d.stats, gamesPlayed: d.stats.gamesPlayed + 1 } }));
     beginRound(0, config);
   }, [beginRound, level, mode, update]);
