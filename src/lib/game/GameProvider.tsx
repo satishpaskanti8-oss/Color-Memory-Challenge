@@ -11,6 +11,7 @@ import {
 import type { Session } from "@supabase/supabase-js";
 
 import { supabase } from "@/integrations/supabase/client";
+import type { Json } from "@/integrations/supabase/types";
 import { ACHIEVEMENTS } from "./config";
 import { sfx, setSoundEnabled, vibrate } from "./sound";
 import {
@@ -110,7 +111,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
         setSoundEnabled(merged.settings.sound);
         await supabase
           .from("game_progress")
-          .upsert({ user_id: userId, data: merged as unknown as Record<string, unknown> });
+          .upsert({ user_id: userId, data: merged as unknown as Json });
         if (!cancelled) setSyncState("synced");
       } catch {
         if (!cancelled) setSyncState("offline");
@@ -129,7 +130,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
         setSyncState("syncing");
         void supabase
           .from("game_progress")
-          .upsert({ user_id: session.user.id, data: data as unknown as Record<string, unknown> })
+          .upsert({ user_id: session.user.id, data: data as unknown as Json })
           .then(({ error }) => setSyncState(error ? "offline" : "synced"));
       }, 900);
     },
@@ -194,7 +195,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
       try {
         await supabase
           .from("game_progress")
-          .upsert({ user_id: session.user.id, data: saveRef.current as unknown as Record<string, unknown> });
+          .upsert({ user_id: session.user.id, data: saveRef.current as unknown as Json });
       } catch {
         /* keep local copy */
       }
@@ -211,7 +212,7 @@ export function GameProvider({ children }: { children: ReactNode }) {
     if (session?.user) {
       await supabase
         .from("game_progress")
-        .upsert({ user_id: session.user.id, data: fresh as unknown as Record<string, unknown> });
+        .upsert({ user_id: session.user.id, data: fresh as unknown as Json });
     }
   }, [session]);
 
