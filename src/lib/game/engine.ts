@@ -18,7 +18,7 @@ function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    [a[i], a[j]] = [a[j]!, a[i]!];
   }
   return a;
 }
@@ -46,13 +46,13 @@ export function createRound(cfg: LevelConfig, roundIndex: number): Round {
   const count = tilesForRound(cfg, roundIndex);
   const positions = shuffle(Array.from({ length: total }, (_, i) => i)).slice(0, count);
   const colors = shuffle(PALETTE.slice(0, cfg.colors)).slice(0, count);
-  const highlights: Highlight[] = positions.map((index, i) => ({ index, color: colors[i] }));
+  const highlights: Highlight[] = positions.map((index, i) => ({ index, color: colors[i]! }));
 
   // With several colors on screen we ask for one specific color; a single tile just gets tapped.
-  const targetColorId = highlights.length > 1 ? highlights[Math.floor(Math.random() * highlights.length)].color.id : null;
+  const targetColorId = highlights.length > 1 ? highlights[Math.floor(Math.random() * highlights.length)]!.color.id : null;
 
   const shift: Shift | null = cfg.moving
-    ? { dir: (["left", "right", "up", "down"] as const)[Math.floor(Math.random() * 4)], amount: 1 }
+    ? { dir: (["left", "right", "up", "down"] as const)[Math.floor(Math.random() * 4)]!, amount: 1 }
     : null;
 
   return { grid: cfg.grid, highlights, targetColorId, shift };
