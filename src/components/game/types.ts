@@ -9,4 +9,5 @@ export type Screen =
   | "rewards"
   | "profile"
   | "settings"
-  | "about";
+  | "about"
+  | "auth";
